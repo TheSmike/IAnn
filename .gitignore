@@ -31,3 +31,4 @@ _ReSharper*/
 .classpath
 .project
 .settings/
+config.properties
