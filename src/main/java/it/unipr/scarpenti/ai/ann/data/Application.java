@@ -4,16 +4,17 @@ import java.math.BigDecimal;
 
 public class Application {
 
-	static String FOLDER = "D:/Google Drive/unipr/03 AI 17-18/machine learning/esercitazioni/ex2/es1b/dataset/";
+	//static String FOLDER = "D:/Google Drive/unipr/03 AI 17-18/machine learning/esercitazioni/ex2/es1b/dataset/";
+	static String FOLDER = "C:\\Users\\Omi087\\Google Drive\\unipr\\03 AI 17-18\\machine learning\\esercitazioni\\ex2\\es1b\\dataset\\";
 
 	public static void main(String[] args) throws Exception {
 
 		System.out.println("START");
 
-		writeDatSet(new BigDecimal("0.2"),  "poorDataset.arff");
-		writeDatSet(new BigDecimal("0.1"),  "mediumDataset.arff");
-		writeDatSet(new BigDecimal("0.05"), "richDataset.arff");
-		writeDatSet(new BigDecimal("0.025"), "veryRichDataset.arff");
+		writeDatSet(new BigDecimal("0.2"),  "poor.arff");
+		writeDatSet(new BigDecimal("0.1"),  "medium.arff");
+		writeDatSet(new BigDecimal("0.05"), "rich.arff");
+		writeDatSet(new BigDecimal("0.025"), "veryRich.arff");
 		
 
 		System.out.println("END");

@@ -1,0 +1,127 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>it.unipr.scarpenti</groupId>
+	<artifactId>neural-networks</artifactId>
+	<version>1</version>
+	<name>Neural Networks</name>
+	<description>Neural Networks example and file arff generation</description>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+	</properties>
+
+
+	<dependencies>
+
+		<dependency>
+			<groupId>org.jgrapht</groupId>
+			<artifactId>jgrapht-core</artifactId>
+			<version>1.2.0</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/jgraph/jgraph -->
+		<dependency>
+			<groupId>jgraph</groupId>
+			<artifactId>jgraph</artifactId>
+			<version>5.13.0.0</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.jgrapht/jgrapht-ext -->
+		<dependency>
+			<groupId>org.jgrapht</groupId>
+			<artifactId>jgrapht-ext</artifactId>
+			<version>0.9.1</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/com.panayotis.javaplot/javaplot -->
+		<dependency>
+			<groupId>com.panayotis.javaplot</groupId>
+			<artifactId>javaplot</artifactId>
+			<version>0.5.0</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/net.ericaro/surfaceplotter -->
+		<dependency>
+			<groupId>net.ericaro</groupId>
+			<artifactId>surfaceplotter</artifactId>
+			<version>2.0.1</version>
+		</dependency>
+
+
+		<dependency>
+			<groupId>org.jzy3d</groupId>
+			<artifactId>jzy3d-api</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+
+
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.jzy3d</groupId> -->
+<!-- 			<artifactId>jzy3d-jdt-core</artifactId> -->
+<!-- 			<version>1.0.0</version> -->
+<!-- 		</dependency> -->
+
+		<dependency>
+			<groupId>nz.ac.waikato.cms.weka</groupId>
+			<artifactId>weka-stable</artifactId>
+			<version>3.8.0</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.jogamp.jogl/jogl -->
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.jogamp.jogl</groupId> -->
+<!-- 			<artifactId>jogl</artifactId> -->
+<!-- 			<version>2.3.2</version> -->
+<!-- 		</dependency> -->
+
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.jogamp.gluegen</groupId> -->
+<!-- 			<artifactId>gluegen-rt-main</artifactId> -->
+<!-- 			<version>2.0-rc11</version> -->
+<!-- 		</dependency> -->
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.jogamp.jogl</groupId> -->
+<!-- 			<artifactId>jogl-all</artifactId> -->
+<!-- 			<version>2.0-rc11</version> -->
+<!-- 		</dependency> -->
+
+
+	</dependencies>
+
+	<repositories>
+		<repository>
+			<id>jzy3d-snapshots</id>
+			<name>Jzy3d Snapshots</name>
+			<url>http://maven.jzy3d.org/snapshots</url>
+		</repository>
+		<repository>
+			<id>jzy3d-releases</id>
+			<name>Jzy3d Releases</name>
+			<url>http://maven.jzy3d.org/releases</url>
+		</repository>
+
+		<repository>
+			<id>central</id>
+			<name>Maven Repository Switchboard</name>
+			<layout>default</layout>
+			<url>http://repo1.maven.org/maven2</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+
+		<repository>
+			<id>oss-sonatype</id>
+			<name>oss-sonatype</name>
+			<url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+
+	</repositories>
+
+</project>

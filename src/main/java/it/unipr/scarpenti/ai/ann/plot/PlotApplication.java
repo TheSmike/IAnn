@@ -1,5 +1,9 @@
 package it.unipr.scarpenti.ai.ann.plot;
 
+import java.io.File;
+import java.io.FileReader;
+import java.util.Properties;
+
 import org.jzy3d.chart.AWTChart;
 import org.jzy3d.chart.Chart;
 import org.jzy3d.chart.ChartLauncher;
@@ -8,28 +12,45 @@ import org.jzy3d.colors.ColorMapper;
 import org.jzy3d.colors.colormaps.ColorMapRainbow;
 import org.jzy3d.maths.BoundingBox3d;
 import org.jzy3d.maths.Coord3d;
-import org.jzy3d.maths.Scale;
 import org.jzy3d.plot3d.primitives.ScatterMultiColor;
 
 import it.unipr.scarpenti.ai.ann.classifier.FunctionClassifier;
 
 public class PlotApplication {
 
-	private static final String MODEL_PATH = "D:\\Google Drive\\unipr\\03 AI 17-18\\machine learning\\esercitazioni\\ex2\\es1b\\model\\";
-	private static final String DATASET_PATH = "D:\\Google Drive\\unipr\\03 AI 17-18\\machine learning\\esercitazioni\\ex2\\es1b\\dataset\\";
-
 	public static void main(String[] args) throws Exception {
 		
 		if (args.length < 2)
-			throw new Exception("due parametri obbligatori:\n"
+			throw new Exception("tre parametri obbligatori:\n"
 					+ " - nome del dataset (e del modello)\n"
+					+ " - livelli e numero neuroni (es.: \"H2_3\" per un due livelli nascosti rispettivamente di 2 e 3 neuroni)\n"
 					+ " - sampling step");
+		Properties props = initProps();
 		
-		scatterPlot(Double.parseDouble(args[1]));
-		scatterClassifiedPlot(args[0]);
+		scatterPlot(Double.parseDouble(args[2]));
+		scatterClassifiedPlot(args[0], args[1], props);
 		
 	}
 	
+	private static Properties initProps() throws Exception {
+		FileReader reader = null;
+		try {
+			File configFile = new File("config.properties");
+			if (!configFile.exists())
+				throw new RuntimeException("file di properties non trovato");
+
+			reader = new FileReader(configFile);
+			Properties props = new Properties();
+			props.load(reader);
+			return props;
+
+		} finally {
+			if (reader != null)
+				reader.close();
+		}
+		
+	}
+
 	private static void scatterPlot(double samplingStep) throws Exception {
 		
 		
@@ -68,10 +89,14 @@ public class PlotApplication {
         return Math.sin(Math.PI * (Math.pow(x, 2) + Math.pow(y, 2)));
     }
     
-    private static void scatterClassifiedPlot(String fileName) throws Exception {
-    	String[] split = fileName.split("_");
-    	String model = MODEL_PATH + fileName + ".model";
-    	String dataset = DATASET_PATH + split[0] + ".arff";
+    private static void scatterClassifiedPlot(String fileName, String hiddenLayers, Properties props) throws Exception {
+    	
+		String datasetFolderPath  =props.getProperty("dataset_folder_path");
+		String modelFolderPath = props.getProperty("model_folder_path");
+		
+    	//String[] split = fileName.split("_");
+    	String model = modelFolderPath + fileName + "_" + hiddenLayers + ".model";
+    	String dataset = datasetFolderPath + fileName + ".arff";
     	
 		FunctionClassifier classifier = new FunctionClassifier(model, dataset);
 		
