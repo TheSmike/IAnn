@@ -23,12 +23,12 @@ public class PlotApplication {
 		if (args.length < 2)
 			throw new Exception("tre parametri obbligatori:\n"
 					+ " - nome del dataset (e del modello)\n"
-					+ " - livelli e numero neuroni (es.: \"H2_3\" per un due livelli nascosti rispettivamente di 2 e 3 neuroni)\n"
+					//+ " - livelli e numero neuroni (es.: \"H2_3\" per un due livelli nascosti rispettivamente di 2 e 3 neuroni)\n"
 					+ " - sampling step");
 		Properties props = initProps();
 		
-		scatterPlot(Double.parseDouble(args[2]));
-		scatterClassifiedPlot(args[0], args[1], props);
+		scatterPlot(Double.parseDouble(args[1]));
+		scatterClassifiedPlot(args[0], props);
 		
 	}
 	
@@ -78,8 +78,8 @@ public class PlotApplication {
 		scatter.setWidth(2f);
 		// Create a chart and add scatter
 		Chart chart = new AWTChart();
-		chart.getAxeLayout().setMainColor(Color.WHITE);
-		chart.getView().setBackgroundColor(Color.BLACK);
+		chart.getAxeLayout().setMainColor(Color.BLACK);
+		chart.getView().setBackgroundColor(Color.WHITE);
 		chart.getScene().add(scatter);
 		ChartLauncher.openChart(chart);
 		
@@ -89,14 +89,14 @@ public class PlotApplication {
         return Math.sin(Math.PI * (Math.pow(x, 2) + Math.pow(y, 2)));
     }
     
-    private static void scatterClassifiedPlot(String fileName, String hiddenLayers, Properties props) throws Exception {
+    private static void scatterClassifiedPlot(String fileName, Properties props) throws Exception {
     	
 		String datasetFolderPath  =props.getProperty("dataset_folder_path");
 		String modelFolderPath = props.getProperty("model_folder_path");
 		
     	//String[] split = fileName.split("_");
-    	String model = modelFolderPath + fileName + "_" + hiddenLayers + ".model";
-    	String dataset = datasetFolderPath + fileName + ".arff";
+    	String model = modelFolderPath + fileName + ".model";
+    	String dataset = datasetFolderPath + "veryrich" + ".arff";
     	
 		FunctionClassifier classifier = new FunctionClassifier(model, dataset);
 		
@@ -115,8 +115,8 @@ public class PlotApplication {
 		scatter.setWidth(2f);
 		// Create a chart and add scatter
 		Chart chart = new AWTChart();
-		chart.getAxeLayout().setMainColor(Color.WHITE);
-		chart.getView().setBackgroundColor(Color.BLACK);
+		chart.getAxeLayout().setMainColor(Color.BLACK);
+		chart.getView().setBackgroundColor(Color.WHITE);
 
 		BoundingBox3d bbox = new BoundingBox3d();
 		bbox.setXmin(-1f);
